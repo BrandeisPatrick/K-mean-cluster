@@ -21,8 +21,8 @@ public class Sample {
 	
 	public String toString() {
 		String string = "{";
-		for(int i=0; i<this.size(); i++) {
-			string += this.get(i)+",";
+		for(int i=0; i<this.sample.size(); i++) {
+			string += this.sample.get(i)+",";
 		}
 		string += "}";
 		return string;

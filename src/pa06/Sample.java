@@ -16,9 +16,18 @@ public class Sample {
 		for (int i=0; i<values.length; i++) {
 			sample.add(values[i]);
 		}
-		
 	}
-	
+	public double Distance(object otherSample) {
+		if ( otherSample instanceof Sample) {
+			// excute
+			return 1;
+		}else {
+			System.out.println("other object is not a sample ")
+			return null;
+		}
+
+	}
+
 	public static void main(String[] args) {
 		System.out.println("testing for the Sample class.");
 		double[] p1 = {1d, 2d, 3.14, 2.71};

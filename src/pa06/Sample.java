@@ -21,10 +21,11 @@ public class Sample {
 	
 	public String toString() {
 		String string = "{";
-		for(int i=0; i<this.sample.size(); i++) {
-			string += this.sample.get(i)+",";
+		int size = this.sample.size();
+		for(int i=0; i<size-1; i++) {
+			string += this.sample.get(i) + ", ";
 		}
-		string += "}";
+		string += this.sample.get(size-1) + "}";
 		return string;
 	}
 	

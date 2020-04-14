@@ -30,6 +30,15 @@ public class Sample {
 		return string;
 	}
 	
+	public double Distance(Sample s2) {
+		double total = 0;
+		for(int i = 0; i<s2.sample.size(); i++) {
+			total += Math.sqrt(Math.abs(this.sample.get(i)-s2.sample.get(i)));
+		}
+		return Math.sqrt(total);
+	}
+
+	
 	public static void main(String[] args) {
 		System.out.println("testing for the Sample class.");
 		double[] p1 = {1d, 2d, 3.14, 2.71};

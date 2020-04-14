@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A Sample represents a vector of doubles to be used in a clustering algorithm...
  * @author presenting
- *
+ *Added a toString() and a Distance() method
  */
 
 public class Sample {

@@ -20,6 +20,7 @@ public class Sample {
 	}
 	
 	public String toString() {
+		/**toString method for printing out Sample ArrayList*/
 		String string = "{";
 		int size = this.sample.size();
 		for(int i=0; i<size-1; i++) {

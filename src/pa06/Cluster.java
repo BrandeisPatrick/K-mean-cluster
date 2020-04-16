@@ -1,5 +1,6 @@
 package pa06;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A cluster is a cluster point (which is itself a sample)
@@ -7,13 +8,13 @@ import java.util.ArrayList;
  * @author presenting
  *
  */
-public class Cluster extends Sample implements Assignment<Cluster>{
-    public ArrayList<Sample> cluster = new ArrayList<Sample>();
-  //public ArrayList<Double> sample;
+public class Cluster implements Assignment<Cluster>{
+    public ArrayList<Sample> cluster;
+    public Sample clusterpt;
 
-    @Override
-    public Cluster(double[] values){
-        cluster.add(values);
+    public Cluster(){
+           cluster = new ArrayList<Sample>();
+           //clusterpt = new Sample();
     }
 
     public void assign(Cluster other){
@@ -23,5 +24,11 @@ public class Cluster extends Sample implements Assignment<Cluster>{
     public void add(double[] values){
         Sample newsample = new Sample(values);
         cluster.add(newsample);
+    }
+
+    //randomly a sample from orginal data, then put it as clusterpt.
+    public void setClusterpt(Cluster originaldata) {
+        Random rd = new Random();
+
     }
 }

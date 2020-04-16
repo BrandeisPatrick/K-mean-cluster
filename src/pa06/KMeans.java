@@ -57,6 +57,13 @@ public class KMeans {
     }
     	return closest;
   }
+    
+    public void reclassify(Cluster originalData) {
+    	for (int i = 0; i<originalData.cluster.size(); i++) {
+    		Cluster closest = findCluster(originalData.cluster.get(i));
+    		closest.add(originalData.cluster.get(i));
+    	}
+    }
 
     //static add method
 }

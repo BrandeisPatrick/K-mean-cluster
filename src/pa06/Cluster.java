@@ -26,6 +26,10 @@ public class Cluster {
         Sample newsample = new Sample(values);
         cluster.add(newsample);
     }
+    
+    public void add(Sample s){
+        cluster.add(s);
+    }
 
     //randomly a sample from orginal data, then put it as clusterpt.
     public Sample setClusterpt(Cluster originaldata) {
@@ -42,5 +46,15 @@ public class Cluster {
             i++;
         }
         return output;
+    }
+    
+    public Double average() { //idk how to return an arraylist lol
+    	int count = 0;
+    	ArrayList<Double> total;
+    	for (Sample s : cluster) {
+    		for (Double i : s.sample) {
+    			//needs to add up respective points of every sample, then divide each by count
+    		}
+    	}
     }
 }

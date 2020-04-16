@@ -1,5 +1,6 @@
 package pa06;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
@@ -7,7 +8,7 @@ import java.io.File;
 public class KMeans {
     public ArrayList<Cluster> kCluster;  //an array of size k of Clusters with randomly generated cluster points
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         Cluster originalData = new Cluster();
 
@@ -21,7 +22,7 @@ public class KMeans {
         ArrayList<int[]> parametersList = new ArrayList<int[]>();
         while(data.hasNextInt()) {
             int num = data.nextInt(); //663441
-            int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1
+            int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             originalData.add(digits);
         }
     }

@@ -7,14 +7,16 @@ import java.util.ArrayList;
  * @author presenting
  *
  */
-public class Cluster extends Sample{
+public class Cluster extends Sample implements Assignment<Cluster>{
     ArrayList<Sample> cluster;
 
-    @Override
-    public Cluster(){
-        //pick a random sample and takes its value as cluster point
-        //or maybe rely on external static methods to initialize
+    public Cluster(double[] values){
+        super(values);    //pick a random sample and takes its value as cluster point
+        // or maybe rely on external static methods to initialize
     }
 
+    public void assign(Cluster other){
+        //assign sample points in the ArrayList<Sample> cluster
+    }
 
 }

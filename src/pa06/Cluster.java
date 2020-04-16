@@ -12,9 +12,9 @@ public class Cluster implements Assignment<Cluster>{
     public ArrayList<Sample> cluster;
     public Sample clusterpt;
 
-    public Cluster(){
+    public Cluster(Cluster originaldata){
            cluster = new ArrayList<Sample>();
-           //clusterpt = new Sample();
+           clusterpt = this.setClusterpt(originaldata);
     }
 
     public void assign(Cluster other){
@@ -27,8 +27,9 @@ public class Cluster implements Assignment<Cluster>{
     }
 
     //randomly a sample from orginal data, then put it as clusterpt.
-    public void setClusterpt(Cluster originaldata) {
+    public Sample setClusterpt(Cluster originaldata) {
         Random rd = new Random();
-
+        int rdindex = rd.nextInt(originaldata.cluster.size());
+        return originaldata.cluster.get(rdindex);
     }
 }

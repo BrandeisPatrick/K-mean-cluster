@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *Added a toString() and a Distance() method
  */
 
-public class Sample {
+public class Sample implements Comparable<Sample> {
 	ArrayList<Double> sample;
 	
 	public Sample(double[] values) {
@@ -20,17 +20,16 @@ public class Sample {
 	}
 	
 	public String toString() {
-		/**toString method for printing out Sample ArrayList*/
-		String string = "{";
-		int size = this.sample.size();
-		for(int i=0; i<size-1; i++) {
-			string += this.sample.get(i) + ", ";
+		String output = "{";
+		for(double n : this.sample){   // more efficient because iterator method is used. (instead of get() )
+			output += n + ", ";
 		}
-		string += this.sample.get(size-1) + "}";
-		return string;
+		output = output.substring(0,output.length()-3);
+		output += "}";
+		return output;
 	}
 	
-	public double Distance(Sample s2) {
+	public double DistanceTo(Sample s2) { //needs interface if your parameter is assumed to be Sample type
 		double total = 0;
 		for(int i = 0; i<s2.sample.size(); i++) {
 			total += Math.sqrt(Math.abs(this.sample.get(i)-s2.sample.get(i)));

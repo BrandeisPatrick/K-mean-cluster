@@ -17,7 +17,6 @@ public class Cluster {
            clusterpt = new Sample();
     }
 
-
     public void add(double[] values){
         Sample newsample = new Sample(values);
         cluster.add(newsample);
@@ -33,5 +32,13 @@ public class Cluster {
         Random rd = new Random();
         int rdindex = rd.nextInt(originaldata.cluster.size());
         return originaldata.cluster.get(rdindex);
+    }
+
+    public String toString(){
+        String output = "";
+        for(Sample n : this.cluster){
+            output += n.toString() + "/n";
+        }
+        return output;
     }
 }

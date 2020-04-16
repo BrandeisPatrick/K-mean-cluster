@@ -38,6 +38,7 @@ public class Cluster {
         return originaldata.cluster.get(rdindex);
     }
 
+    //prints the cluster as a series of samples
     public String toString(){
         int i = 0;
         String output = "";
@@ -48,6 +49,7 @@ public class Cluster {
         return output;
     }
     
+    //finds and returns the average of all the samples in the cluster
     public ArrayList<Double> average() { 
     	ArrayList<Double> total = new ArrayList<Double>();
     	

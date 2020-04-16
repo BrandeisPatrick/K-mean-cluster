@@ -48,13 +48,18 @@ public class Cluster {
         return output;
     }
     
-    public Double average() { //idk how to return an arraylist lol
-    	int count = 0;
-    	ArrayList<Double> total;
-    	for (Sample s : cluster) {
-    		for (Double i : s.sample) {
-    			//needs to add up respective points of every sample, then divide each by count
+  //finds and returns the average of all the samples in the cluster
+    public ArrayList<Double> average() { 
+    	ArrayList<Double> total = new ArrayList<Double>();
+    	
+    	for(int i = 0; i <this.clusterpt.sample.size(); i++) {
+        	int count = 0;
+    		for(int j = 0; j < this.cluster.size();j++) {
+    			count += this.cluster.get(j).sample.get(i);
     		}
+    		double avgCount = count/this.clusterpt.sample.size();
+    		total.add(avgCount);
     	}
+    	return total;
     }
 }

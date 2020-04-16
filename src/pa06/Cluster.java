@@ -8,20 +8,22 @@ import java.util.Random;
  * @author presenting
  *
  */
-public class Cluster implements Assignment<Cluster>{
+public class Cluster {
     public ArrayList<Sample> cluster;
     public Sample clusterpt;
 
-    public Cluster(Cluster originaldata){
+    public Cluster(){
            cluster = new ArrayList<Sample>();
-           clusterpt = this.setClusterpt(originaldata);
+           clusterpt = new Sample();
     }
 
-    public void assign(Cluster other){
-        //assign sample points in the ArrayList<Sample> cluster
-    }
 
     public void add(double[] values){
+        Sample newsample = new Sample(values);
+        cluster.add(newsample);
+    }
+
+    public void add(int[] values){
         Sample newsample = new Sample(values);
         cluster.add(newsample);
     }

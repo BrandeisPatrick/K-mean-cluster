@@ -18,7 +18,20 @@ public class Sample implements Comparable<Sample> {
 		}
 		
 	}
-	
+
+	public Sample(int[] values) {
+		this.sample = new ArrayList<Double>();
+		for (int i=0; i<values.length; i++) {
+			sample.add((double) values[i]);
+		}
+
+	}
+
+	public Sample() {
+		this.sample = new ArrayList<Double>();
+	}
+
+
 	public String toString() {
 		String output = "{";
 		for(double n : this.sample){   // more efficient because iterator method is used. (instead of get() )

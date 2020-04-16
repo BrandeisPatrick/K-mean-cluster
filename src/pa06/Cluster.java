@@ -8,11 +8,12 @@ import java.util.ArrayList;
  *
  */
 public class Cluster extends Sample implements Assignment<Cluster>{
-    public ArrayList<Sample> cluster;
+    public ArrayList<Sample> cluster = new ArrayList<Sample>();
+  //public ArrayList<Double> sample;
 
+    @Override
     public Cluster(double[] values){
-        super(values);
-        cluster = new ArrayList<Sample>();
+        cluster.add(values);
     }
 
     public void assign(Cluster other){

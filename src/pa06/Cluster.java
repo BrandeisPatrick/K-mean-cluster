@@ -8,15 +8,19 @@ import java.util.ArrayList;
  *
  */
 public class Cluster extends Sample implements Assignment<Cluster>{
-    ArrayList<Sample> cluster;
+    public ArrayList<Sample> cluster;
 
     public Cluster(double[] values){
-        super(values);    //pick a random sample and takes its value as cluster point
-        // or maybe rely on external static methods to initialize
+        super(values);
+        cluster = new ArrayList<Sample>();
     }
 
     public void assign(Cluster other){
         //assign sample points in the ArrayList<Sample> cluster
     }
 
+    public void add(double[] values){
+        Sample newsample = new Sample(values);
+        cluster.add(newsample);
+    }
 }

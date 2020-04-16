@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 
 public class Sample implements Comparable<Sample> {
-	ArrayList<Double> sample;
+	public ArrayList<Double> sample;
 	
 	public Sample(double[] values) {
 		this.sample = new ArrayList<Double>();

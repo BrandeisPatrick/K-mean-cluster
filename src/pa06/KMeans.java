@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class KMeans {
-    ArrayList<Cluster> kcluster;  //an array of size k of Clusters with randomly generated cluster points
-    Cluster originalData;         //an element originalData which is a cluster of all original data with the single sample point (0,0,....)
+    public Cluster originalData = new Cluster();     //an element originalData which is a cluster of all original data with the single sample point (0,0,....)
+    public ArrayList<Cluster> kcluster;                                //an array of size k of Clusters with randomly generated cluster points
+
+
+    private static Cluster originalData;
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -14,6 +17,12 @@ public class KMeans {
         System.out.print("Number of clusters: ");
         int numClusters = in.nextInt();
 
+        Scanner data = new Scanner(new file(filename));
+        while(data.hasNextInt()) {
+            int num = data.nextInt();
+            int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();
+
+        }
     }
 
 }

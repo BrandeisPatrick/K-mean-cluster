@@ -18,7 +18,7 @@ public class KMeans {
         System.out.print("Number of clusters: ");
         int numClusters = in.nextInt();
 
-        Scanner data = new Scanner(new file(filename));
+        Scanner data = new Scanner(new File(filename));
         ArrayList<int[]> parametersList = new ArrayList<int[]>();
         while(data.hasNextInt()) {
             int num = data.nextInt(); //663441

@@ -6,11 +6,9 @@ import java.util.Scanner;
 import java.io.File;
 
 public class KMeans {
-    public ArrayList<Cluster> kCluster;  //an array of size k of Clusters with randomly generated cluster points
-
+    
     public static void main(String[] args) throws FileNotFoundException {
-
-        Cluster originalData = new Cluster();
+    	ArrayList<Cluster> kCluster = new ArrayList<Cluster>();  //an array of size k of Clusters with randomly generated cluster points
 
         Scanner in = new Scanner(System.in);
         System.out.print("Filename: ");
@@ -18,29 +16,37 @@ public class KMeans {
         System.out.print("Number of clusters: ");
         int numClusters = in.nextInt();
 
-        Scanner data = new Scanner(new File(filename));
-        ArrayList<int[]> parametersList = new ArrayList<int[]>();
+        Cluster originalData = setupOriginalData(filename, numClusters);
+        
+        //KMeans k = new KMeans();
+        setup(kCluster, originalData, numClusters);
+        
+        System.out.println(originalData);
+        System.out.println(kCluster);
+    }
+    
+	//reads the file and puts the data from it into the cluster orginaldata
+    public static Cluster setupOriginalData(String filename, int numClusters) throws FileNotFoundException{
+    	Cluster originalData = new Cluster();
+    	Scanner data = new Scanner(new File(filename));
         while(data.hasNextInt()) {
             int num = data.nextInt(); //663441
             int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             originalData.add(digits);
         }
-        
-        KMeans k = new KMeans();
-        k.setup(originalData, numClusters);
-        
-        System.out.print(originalData);
+        return originalData;
     }
     
-    public void setup(Cluster originalData, int numClusters) {
-    	  for (int i = 0; i<numClusters; i++) {
+    //sets up kCluster to have k Clusters, each with an associated Sample point
+    public static void setup(ArrayList<Cluster> kCluster, Cluster originalData, int numClusters) {  
+    	for (int i = 0; i<numClusters; i++) {
           	Cluster c = new Cluster();
           	c.setClusterpt(originalData);
           	kCluster.add(c);
           }
     }
     
-    public Cluster findCluster(Sample s) {
+    public Cluster findCluster(Sample s, Cluster kCluster) {
     	Double minDistance = 0.0;
     	Cluster closest = kCluster.get(0);
     	for (int i = 0; i < kCluster.size(); i++) {

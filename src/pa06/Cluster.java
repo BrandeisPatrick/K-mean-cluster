@@ -14,7 +14,7 @@ public class Cluster {
 
     public Cluster(){
            cluster = new ArrayList<Sample>();
-           clusterpt = new Sample();
+           setClusterpt(cluster);
     }
 
     public void add(double[] values){
@@ -31,11 +31,11 @@ public class Cluster {
         cluster.add(s);
     }
 
-    //randomly a sample from orginal data, then put it as clusterpt.
-    public Sample setClusterpt(Cluster originaldata) {
+    //randomly picks a sample from orginal data, then put it as clusterpt.
+    public void setClusterpt(ArrayList<Sample> originaldata) {
         Random rd = new Random();
-        int rdindex = rd.nextInt(originaldata.cluster.size());
-        return originaldata.cluster.get(rdindex);
+        int rdindex = rd.nextInt(originaldata.size());
+        this.clusterpt = originaldata.get(rdindex);
     }
 
     public String toString(){

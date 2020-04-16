@@ -25,6 +25,7 @@ public class KMeans {
             int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             originalData.add(digits);
         }
+        System.out.print(originalData);
     }
 
     //static add method

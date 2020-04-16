@@ -35,9 +35,11 @@ public class Cluster {
     }
 
     public String toString(){
+        int i = 0;
         String output = "";
         for(Sample n : this.cluster){
-            output += n.toString() + "/n";
+            if(i<100){output += n.toString() + "\n";}
+            i++;
         }
         return output;
     }

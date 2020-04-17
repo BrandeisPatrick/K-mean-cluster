@@ -21,7 +21,13 @@ public class KMeans {
         //KMeans k = new KMeans();
         setup(kCluster, originalData, numClusters);
         
+        System.out.println("Original stuff: ");
         System.out.println(originalData);
+        System.out.println(kCluster);
+        
+        reclassify(originalData, kCluster);
+        
+        System.out.println("after reclassifying: ");
         System.out.println(kCluster);
     }
     
@@ -46,7 +52,8 @@ public class KMeans {
           }
     }
     
-    public Cluster findCluster(Sample s, Cluster kCluster) {
+    //finds the cluster that the Sample point is closest to
+    public static Cluster findCluster(Sample s, ArrayList<Cluster> kCluster) {
     	Double minDistance = 0.0;
     	Cluster closest = kCluster.get(0);
     	for (int i = 0; i < kCluster.size(); i++) {
@@ -64,9 +71,10 @@ public class KMeans {
     	return closest;
   }
     
-    public void reclassify(Cluster originalData) {
+    //assigns all the originalData to the closest Clusters
+    public static void reclassify(Cluster originalData, ArrayList<Cluster> kCluster) {
     	for (int i = 0; i<originalData.cluster.size(); i++) {
-    		Cluster closest = findCluster(originalData.cluster.get(i));
+    		Cluster closest = findCluster(originalData.cluster.get(i), kCluster);
     		closest.add(originalData.cluster.get(i));
     	}
     }

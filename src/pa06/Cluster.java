@@ -12,10 +12,16 @@ public class Cluster {
     public ArrayList<Sample> cluster;
     public Sample clusterpt;
 
-    public Cluster(){
+    public Cluster(Cluster originaldata){
            cluster = new ArrayList<Sample>();
-           clusterpt = new Sample();
+           clusterpt = setClusterpt(originaldata);
     }
+
+    public Cluster(){
+        cluster = new ArrayList<Sample>();
+        clusterpt = new Sample();
+    }
+
 
     public void add(double[] values){
         Sample newsample = new Sample(values);

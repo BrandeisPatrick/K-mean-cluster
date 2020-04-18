@@ -1,75 +1,51 @@
 package pa06;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
 
 public class KMeans {
-    public ArrayList<Cluster> kCluster;  //an array of size k of Clusters with randomly generated cluster points
+    public ArrayList<Cluster> kClusters;
+    public Cluster originalData;
 
-    public KMeans(int k){
-        for
+    public KMeans() throws FileNotFoundException {
+        this.kClusters = new ArrayList<Cluster>();
+        this.originalData = new Cluster();
+        setOriginalData();
+        setKClusters();
     }
 
 
-
-    public static void main(String[] args) throws FileNotFoundException {
-
-        Cluster originalData = new Cluster();
-
+    //set originalData cluster using parameters in the File
+    public void setOriginalData() throws FileNotFoundException {
         Scanner in = new Scanner(System.in);
         System.out.print("Filename: ");
         String filename = in.nextLine();
+        Scanner file = new Scanner(new File(filename));
+
+        while(file.hasNextInt()) {
+            int num = file.nextInt(); //663441
+            int[] parameter = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
+            this.originalData.add(parameter);
+        }
+    }
+
+    //add k clusters to the KClusters ArrayList
+    public void setKClusters(){
+        Scanner in = new Scanner(System.in);
         System.out.print("Number of clusters: ");
         int numClusters = in.nextInt();
-
-        Scanner data = new Scanner(new File(filename));
-        ArrayList<int[]> parametersList = new ArrayList<int[]>();
-        while(data.hasNextInt()) {
-            int num = data.nextInt(); //663441
-            int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
-            originalData.add(digits);
+        for(int i = 0; i < numClusters; i++) {
+            Cluster cluster = new Cluster(this.originalData);
+            kClusters.add(cluster);
         }
-        
-        KMeans k = new KMeans();
-        k.setup(originalData, numClusters);
-        
-        System.out.print(originalData);
-    }
-    
-    public void setup(Cluster originalData, int numClusters) {
-    	  for (int i = 0; i<numClusters; i++) {
-          	Cluster c = new Cluster();
-          	c.setClusterpt(originalData);
-          	kCluster.add(c);
-          }
-    }
-    
-    public Cluster findCluster(Sample s) {
-    	Double minDistance = 0.0;
-    	Cluster closest = kCluster.get(0);
-    	for (int i = 0; i < kCluster.size(); i++) {
-    		if (i == 0) {
-    			minDistance = s.DistanceTo(kCluster.get(i).clusterpt);
-    			closest = kCluster.get(i);
-    		} else {
-	    		Double distance = s.DistanceTo(kCluster.get(i).clusterpt);
-	    		if (distance < minDistance) {
-	    			minDistance = distance;
-	    			closest = kCluster.get(i);
-    		}
-    	}
-    }
-    	return closest;
-  }
-    
-    public void reclassify(Cluster originalData) {
-    	for (int i = 0; i<originalData.cluster.size(); i++) {
-    		Cluster closest = findCluster(originalData.cluster.get(i));
-    		closest.add(originalData.cluster.get(i));
-    	}
     }
 
-    //static add method
-}
+    //fill k clusters with samples (distributed by closest distance)
+    public void fillClusters(){
+
+
+    }
+
+  }

@@ -8,6 +8,12 @@ import java.io.File;
 public class KMeans {
     public ArrayList<Cluster> kCluster;  //an array of size k of Clusters with randomly generated cluster points
 
+    public KMeans(int k){
+        for
+    }
+
+
+
     public static void main(String[] args) throws FileNotFoundException {
 
         Cluster originalData = new Cluster();

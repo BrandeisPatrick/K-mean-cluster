@@ -50,7 +50,7 @@ public class Sample implements Comparable<Sample> {
 		return Math.sqrt(total);
 	}
 
-	
+	//test (static method)
 	public static void main(String[] args) {
 		System.out.println("testing for the Sample class.");
 		double[] p1 = {1d, 2d, 3.14, 2.71};

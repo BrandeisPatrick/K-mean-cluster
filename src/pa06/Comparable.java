@@ -1,6 +1,6 @@
 package pa06;
 
 public interface Comparable<Sample> {
-    public double DistanceTo(Sample s); //do I need to declare double here ?
+    public double distanceTo(Sample s); //do I need to declare double here ?
 
 }

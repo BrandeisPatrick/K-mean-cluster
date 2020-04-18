@@ -4,8 +4,10 @@ import java.io.FileNotFoundException;
 
 public class Optimization {
     public static void main(String[] args) throws FileNotFoundException {
-        KMeans simulation = new KMeans();
-        System.out.println(simulation.originalData);
+        KMeans kmeans = new KMeans();
+    //  System.out.println(kmeans.originalData);
+        kmeans.fillClusters();
+        System.out.println(kmeans);
     }
 
 

@@ -48,8 +48,14 @@ public class Cluster {
     public String toString(){
         int i = 0;
         String output = "";
-        for(Sample n : this.cluster){
-            if(i<100){output += n.toString() + "\n";}
+        if(clusterpt != null) {
+            output += "Cluster pt. : " + clusterpt.toString() +  " Cluster samples : ";
+        }else{
+            output +=  "originalData samples : ";
+        }
+
+        for(Sample sample : this.cluster){
+            if(i<100){output += sample.toString() + " ";}
             i++;
         }
         return output;

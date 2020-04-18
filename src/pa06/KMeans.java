@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class KMeans {
     public ArrayList<Cluster> kClusters;
@@ -24,7 +25,7 @@ public class KMeans {
         String filename = in.nextLine();
         Scanner file = new Scanner(new File(filename));
 
-        while(file.hasNextInt()) {
+        while (file.hasNextInt()) {
             int num = file.nextInt(); //663441
             int[] parameter = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             this.originalData.add(parameter);
@@ -32,20 +33,49 @@ public class KMeans {
     }
 
     //add k clusters to the KClusters ArrayList
-    public void setKClusters(){
+    public void setKClusters() {
         Scanner in = new Scanner(System.in);
         System.out.print("Number of clusters: ");
         int numClusters = in.nextInt();
-        for(int i = 0; i < numClusters; i++) {
+        for (int i = 0; i < numClusters; i++) {
             Cluster cluster = new Cluster(this.originalData);
             kClusters.add(cluster);
         }
     }
 
-    //fill k clusters with samples (distributed by closest distance)
-    public void fillClusters(){
-
-
+    @Override
+    public String toString() {
+        String output = "KMeans kClusters : \n";
+        for(Cluster cluster : this.kClusters){
+            output += cluster.toString() + "\n";
+        }
+        return output;
     }
 
-  }
+    //fill k clusters with samples (distributed by closest distance)
+    public void fillClusters() {
+        Iterator<Sample> itr = originalData.cluster.iterator();
+        while (itr.hasNext()) {
+            Sample element = itr.next();
+            findCluster(element,kClusters).add(element);
+        }
+    }
+
+    //find the cluster which is closest to the sample (element)
+    public Cluster findCluster(Sample element, ArrayList<Cluster> kClusters) {
+        double minDist = element.distanceTo(kClusters.get(0).clusterpt);
+        Cluster closest = kClusters.get(0);
+
+        Iterator<Cluster> itr = kClusters.iterator();  //Iterator used for efficiency (in case k is large)
+        itr.next();
+        while(itr.hasNext()){
+            Cluster cluster = itr.next();
+            double dist = element.distanceTo(cluster.clusterpt);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = cluster;
+            }
+        }
+        return closest;
+    }
+}

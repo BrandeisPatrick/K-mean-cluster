@@ -37,12 +37,12 @@ public class Sample implements Comparable<Sample> {
 		for(double n : this.sample){   // more efficient because iterator method is used. (instead of get() )
 			output += n + ", ";
 		}
-		output = output.substring(0,output.length()-3);
+		output = output.substring(0,output.length()-2);
 		output += "}";
 		return output;
 	}
 	
-	public double DistanceTo(Sample s2) { //needs interface if your parameter is assumed to be Sample type
+	public double distanceTo(Sample s2) { //needs interface if your parameter is assumed to be Sample type
 		double total = 0;
 		for(int i = 0; i<s2.sample.size(); i++) {
 			total += Math.sqrt(Math.abs(this.sample.get(i)-s2.sample.get(i)));

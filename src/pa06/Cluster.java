@@ -26,6 +26,10 @@ public class Cluster {
         Sample newsample = new Sample(values);
         cluster.add(newsample);
     }
+    
+    public void add(Sample s){
+        cluster.add(s);
+    }
 
     //randomly a sample from orginal data, then put it as clusterpt.
     public Sample setClusterpt(Cluster originaldata) {
@@ -34,6 +38,7 @@ public class Cluster {
         return originaldata.cluster.get(rdindex);
     }
 
+    //prints the cluster as a series of samples
     public String toString(){
         int i = 0;
         String output = "";
@@ -42,5 +47,20 @@ public class Cluster {
             i++;
         }
         return output;
+    }
+    
+    //finds and returns the average of all the samples in the cluster
+    public ArrayList<Double> average() { 
+    	ArrayList<Double> total = new ArrayList<Double>();
+    	
+    	for(int i = 0; i <this.clusterpt.sample.size(); i++) {
+        	int count = 0;
+    		for(int j = 0; j < this.cluster.size();j++) {
+    			count += this.cluster.get(j).sample.get(i);
+    		}
+    		double avgCount = count/this.clusterpt.sample.size();
+    		total.add(avgCount);
+    	}
+    	return total;
     }
 }

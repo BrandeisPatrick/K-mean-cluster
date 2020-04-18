@@ -31,7 +31,44 @@ public class KMeans {
             int[] digits = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             originalData.add(digits);
         }
+        
+        KMeans k = new KMeans();
+        k.setup(originalData, numClusters);
+        
         System.out.print(originalData);
+    }
+    
+    public void setup(Cluster originalData, int numClusters) {
+    	  for (int i = 0; i<numClusters; i++) {
+          	Cluster c = new Cluster();
+          	c.setClusterpt(originalData);
+          	kCluster.add(c);
+          }
+    }
+    
+    public Cluster findCluster(Sample s) {
+    	Double minDistance = 0.0;
+    	Cluster closest = kCluster.get(0);
+    	for (int i = 0; i < kCluster.size(); i++) {
+    		if (i == 0) {
+    			minDistance = s.DistanceTo(kCluster.get(i).clusterpt);
+    			closest = kCluster.get(i);
+    		} else {
+	    		Double distance = s.DistanceTo(kCluster.get(i).clusterpt);
+	    		if (distance < minDistance) {
+	    			minDistance = distance;
+	    			closest = kCluster.get(i);
+    		}
+    	}
+    }
+    	return closest;
+  }
+    
+    public void reclassify(Cluster originalData) {
+    	for (int i = 0; i<originalData.cluster.size(); i++) {
+    		Cluster closest = findCluster(originalData.cluster.get(i));
+    		closest.add(originalData.cluster.get(i));
+    	}
     }
 
     //static add method

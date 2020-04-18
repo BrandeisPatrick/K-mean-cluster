@@ -53,7 +53,9 @@ public class KMeans {
     }
 
     public void tick(){
-
+        for(int i = 0; i < kClusters.size(); i++){
+            kClusters.get(i).optimize();
+        }
     }
     //fill k clusters with samples (distributed by closest distance)
     public void fillClusters() {

@@ -8,6 +8,8 @@ public class Optimization {
     //  System.out.println(kmeans.originalData);
         kmeans.fillClusters();
         System.out.println(kmeans);
+        kmeans.tick();
+        System.out.println(kmeans);
     }
 
 

@@ -52,10 +52,13 @@ public class KMeans {
         return output;
     }
 
+    public void tick(){
+
+    }
     //fill k clusters with samples (distributed by closest distance)
     public void fillClusters() {
         Iterator<Sample> itr = originalData.cluster.iterator();
-        while (itr.hasNext()) {
+        while(itr.hasNext()) {
             Sample element = itr.next();
             findCluster(element,kClusters).add(element);
         }

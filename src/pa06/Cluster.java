@@ -1,5 +1,6 @@
 package pa06;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -14,7 +15,7 @@ public class Cluster {
 
     public Cluster(Cluster originaldata){
            cluster = new ArrayList<Sample>();
-           clusterpt = setClusterpt(originaldata);
+           setClusterpt(originaldata);
     }
 
     public Cluster(){
@@ -22,6 +23,20 @@ public class Cluster {
         clusterpt = new Sample();
     }
 
+    public void setClusterpt(Cluster originaldata) {
+        this.clusterpt = RdClusterpt(originaldata);
+    }
+
+    public void setClusterpt(Sample newpoint) {
+        this.clusterpt = newpoint;
+    }
+
+    //randomly a sample from orginal data, then put it as clusterpt.
+    public Sample RdClusterpt(Cluster originaldata) {
+        Random rd = new Random();
+        int rdindex = rd.nextInt(originaldata.cluster.size());
+        return originaldata.cluster.get(rdindex);
+    }
 
     public void add(double[] values){
         Sample newsample = new Sample(values);
@@ -32,16 +47,9 @@ public class Cluster {
         Sample newsample = new Sample(values);
         cluster.add(newsample);
     }
-    
-    public void add(Sample s){
-        cluster.add(s);
-    }
 
-    //randomly a sample from orginal data, then put it as clusterpt.
-    public Sample setClusterpt(Cluster originaldata) {
-        Random rd = new Random();
-        int rdindex = rd.nextInt(originaldata.cluster.size());
-        return originaldata.cluster.get(rdindex);
+    public void add(Sample newsample){
+        cluster.add(newsample);
     }
 
     //prints the cluster as a series of samples
@@ -60,19 +68,24 @@ public class Cluster {
         }
         return output;
     }
-    
+
+    public void optimize(){
+        this.setClusterpt(this.average());
+    }
+
     //finds and returns the average of all the samples in the cluster
-    public ArrayList<Double> average() { 
-    	ArrayList<Double> total = new ArrayList<Double>();
-    	
-    	for(int i = 0; i <this.clusterpt.sample.size(); i++) {
-        	int count = 0;
-    		for(int j = 0; j < this.cluster.size();j++) {
-    			count += this.cluster.get(j).sample.get(i);
+    public Sample average(){
+    	int length = this.clusterpt.sample.size();
+        double[] aveParameter = new double[length];
+
+    	for(int i = 0; i < length; i++) {
+        	double sum = 0.0;
+    		for(Sample sample : this.cluster){
+    		    sum += sample.sample.get(i);
     		}
-    		double avgCount = count/this.clusterpt.sample.size();
-    		total.add(avgCount);
-    	}
-    	return total;
+            aveParameter[i] = sum/this.cluster.size(); // averaging all over all samples in cluster array
+        }
+        Sample ave = new Sample(aveParameter);
+    	return ave;
     }
 }

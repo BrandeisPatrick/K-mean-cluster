@@ -2,6 +2,7 @@ package pa06;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Iterator;
@@ -27,7 +28,9 @@ public class KMeans {
         //int i = 1;
         while (file.hasNextInt()) {
             int num = file.nextInt(); //663441
-            int[] parameter = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
+            DecimalFormat df = new DecimalFormat("000000");
+            String str = df.format(num);
+            int[] parameter = str.chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             this.originalData.add(parameter);
         //    System.out.println(i);
         //    i++;

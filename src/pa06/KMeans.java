@@ -24,13 +24,13 @@ public class KMeans {
         System.out.print("Filename: ");
         String filename = in.nextLine();
         Scanner file = new Scanner(new File(filename));
-        int i = 1;
+        //int i = 1;
         while (file.hasNextInt()) {
             int num = file.nextInt(); //663441
             int[] parameter = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             this.originalData.add(parameter);
-            System.out.println(i);
-            i++;
+        //    System.out.println(i);
+        //    i++;
         }
     }
 
@@ -41,8 +41,24 @@ public class KMeans {
         int numClusters = in.nextInt();
         for (int i = 0; i < numClusters; i++) {
             Cluster cluster = new Cluster(this.originalData);
+            while(isDuplicate(cluster)){
+                cluster = new Cluster(this.originalData);
+            }
             kClusters.add(cluster);
         }
+       //System.out.println("finish setting k empty clusters");
+    }
+
+    //check if new clusterpt is same as old clusterpts
+    public boolean isDuplicate(Cluster cluster){
+        Sample newpt = cluster.clusterpt;
+        for(Cluster c : kClusters){
+            double dist = newpt.distanceTo(c.clusterpt);
+            if (Math.abs(dist) < 0.00001){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -67,7 +83,6 @@ public class KMeans {
         for(int i = 0; i < kClusters.size(); i++) {
             kClusters.get(i).cleanCluster();
         }
-    //  System.out.println(kClusters);
         Iterator<Sample> itr = originalData.cluster.iterator();
         while(itr.hasNext()) {
             Sample element = itr.next();

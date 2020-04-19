@@ -25,7 +25,7 @@ public class Cluster {
     
     //used at the beginning when you initialize the clusters
     public void setClusterpt(Cluster originaldata) {
-        this.clusterpt = RdClusterpt(originaldata);
+        this.clusterpt =  RdClusterpt(originaldata);
     }
 
     //used each tick when you make new refined clusters to set the new cluster point

@@ -24,11 +24,13 @@ public class KMeans {
         System.out.print("Filename: ");
         String filename = in.nextLine();
         Scanner file = new Scanner(new File(filename));
-
+        int i = 1;
         while (file.hasNextInt()) {
             int num = file.nextInt(); //663441
             int[] parameter = Integer.toString(num).chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
             this.originalData.add(parameter);
+            System.out.println(i);
+            i++;
         }
     }
 

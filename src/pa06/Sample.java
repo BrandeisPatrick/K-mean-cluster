@@ -33,13 +33,17 @@ public class Sample implements Comparable<Sample> {
 
 
 	public String toString() {
-		String output = "{";
-		for(double n : this.sample){   // more efficient because iterator method is used. (instead of get() )
-			output += n + ", ";
+		if(this.sample.size() > 0) {
+			String output = "{";
+			for (double n : this.sample) {   // more efficient because iterator method is used. (instead of get() )
+				output += n + ", ";
+			}
+			output = output.substring(0, output.length() - 2);
+			output += "}";
+			return output;
+		}else{
+			return "null";
 		}
-		output = output.substring(0,output.length()-2);
-		output += "}";
-		return output;
 	}
 	
 	public double distanceTo(Sample s2) { //needs interface if your parameter is assumed to be Sample type

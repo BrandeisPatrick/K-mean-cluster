@@ -33,7 +33,7 @@ public class KMeans {
     }
 
     //add k clusters to the KClusters ArrayList
-    public void setKClusters() {
+    public void setKClusters(){
         Scanner in = new Scanner(System.in);
         System.out.print("Number of clusters: ");
         int numClusters = in.nextInt();
@@ -44,7 +44,7 @@ public class KMeans {
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         String output = "KMeans kClusters : \n";
         for(Cluster cluster : this.kClusters){
             output += cluster.toString() + "\n";
@@ -52,13 +52,19 @@ public class KMeans {
         return output;
     }
 
+    //optimize each cluster pt.
     public void tick(){
         for(int i = 0; i < kClusters.size(); i++){
             kClusters.get(i).optimize();
         }
     }
+
     //fill k clusters with samples (distributed by closest distance)
     public void fillClusters() {
+        for(int i = 0; i < kClusters.size(); i++) {
+            kClusters.get(i).cleanCluster();
+        }
+    //  System.out.println(kClusters);
         Iterator<Sample> itr = originalData.cluster.iterator();
         while(itr.hasNext()) {
             Sample element = itr.next();
@@ -66,6 +72,7 @@ public class KMeans {
         }
     }
 
+    //used in fillClusters() methods.
     //find the cluster which is closest to the sample (element)
     public Cluster findCluster(Sample element, ArrayList<Cluster> kClusters) {
         double minDist = element.distanceTo(kClusters.get(0).clusterpt);

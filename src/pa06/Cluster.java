@@ -31,6 +31,14 @@ public class Cluster {
         this.clusterpt = newpoint;
     }
 
+    public void cleanCluster() {
+        Iterator<Sample> itr = cluster.iterator();
+        while(itr.hasNext()){
+            itr.next();
+            itr.remove();
+        }
+    }
+
     //randomly a sample from orginal data, then put it as clusterpt.
     public Sample RdClusterpt(Cluster originaldata) {
         Random rd = new Random();
@@ -56,7 +64,7 @@ public class Cluster {
     public String toString(){
         int i = 0;
         String output = "";
-        if(clusterpt != null) {
+        if(clusterpt.sample.size() > 0) {
             output += "Cluster pt. : " + clusterpt.toString() +  " Cluster samples : ";
         }else{
             output +=  "originalData samples : ";

@@ -57,6 +57,7 @@ public class KMeans {
         for(int i = 0; i < kClusters.size(); i++){
             kClusters.get(i).optimize();
         }
+        fillClusters();
     }
 
     //fill k clusters with samples (distributed by closest distance)

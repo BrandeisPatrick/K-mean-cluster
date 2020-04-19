@@ -93,6 +93,9 @@ public class Cluster {
     	int length = this.clusterpt.sample.size();
         double[] aveParameter = new double[length];
 
+        if(length == 0){
+            return this.clusterpt;
+        }
     	for(int i = 0; i < length; i++) {
         	double sum = 0.0;
     		for(Sample sample : this.cluster){

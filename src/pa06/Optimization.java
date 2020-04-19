@@ -16,8 +16,5 @@ public class Optimization {
         System.out.println(kmeans);
         kmeans.tick();
         System.out.println(kmeans);
-
     }
-
-
 }

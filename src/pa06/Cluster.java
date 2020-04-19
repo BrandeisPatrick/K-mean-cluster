@@ -10,7 +10,7 @@ import java.util.Random;
  *
  */
 public class Cluster {
-    public ArrayList<Sample> cluster;
+    public ArrayList<Sample> cluster; 
     public Sample clusterpt;
 
     public Cluster(Cluster originaldata){
@@ -22,15 +22,20 @@ public class Cluster {
         cluster = new ArrayList<Sample>();
         clusterpt = new Sample();
     }
-
+    
+    //used at the beginning when you initialize the clusters
     public void setClusterpt(Cluster originaldata) {
         this.clusterpt = RdClusterpt(originaldata);
     }
 
+    //used each tick when you make new refined clusters to set the new cluster point
     public void setClusterpt(Sample newpoint) {
         this.clusterpt = newpoint;
     }
-
+    
+    /*takes every sample out of the previous clusters so that when you refill 
+     * them there's no duplicate samples
+     */
     public void cleanCluster() {
         Iterator<Sample> itr = cluster.iterator();
         while(itr.hasNext()){
@@ -46,6 +51,7 @@ public class Cluster {
         return originaldata.cluster.get(rdindex);
     }
 
+    //methods to add a Sample to a Cluster
     public void add(double[] values){
         Sample newsample = new Sample(values);
         cluster.add(newsample);
@@ -77,6 +83,7 @@ public class Cluster {
         return output;
     }
 
+    //implements average each tick to reevaluate where the centroids are
     public void optimize(){
         this.setClusterpt(this.average());
     }

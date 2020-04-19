@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.Iterator;
 
 public class KMeans {
-    public ArrayList<Cluster> kClusters;
+    public ArrayList<Cluster> kClusters; 
     public Cluster originalData;
 
     public KMeans() throws FileNotFoundException {

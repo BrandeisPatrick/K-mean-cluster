@@ -73,7 +73,7 @@ public class KMeans {
         }
     }
 
-    //used in fillClusters() methods.
+    //used in fillClusters() methods..
     //find the cluster which is closest to the sample (element)
     public Cluster findCluster(Sample element, ArrayList<Cluster> kClusters) {
         double minDist = element.distanceTo(kClusters.get(0).clusterpt);

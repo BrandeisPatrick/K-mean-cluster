@@ -36,9 +36,8 @@ public class Sample implements Comparable<Sample> {
 		if(this.sample.size() > 0) {
 			String output = "{";
 			for (double n : this.sample) {   // more efficient because iterator method is used. (instead of get() )
-				output += n + ", ";
+				output +=  (int)n ;
 			}
-			output = output.substring(0, output.length() - 2);
 			output += "}";
 			return output;
 		}else{

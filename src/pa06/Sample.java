@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 /**
  * A Sample represents a vector of doubles to be used in a clustering algorithm...
- * @author presenting
- *Added a toString() and a Distance() method
+ * @authors Patrick Lee, Denise Zong, Caelan Gawah-Meaden, Kyra Rivest
+ *Added a toString() and a Distance() method onto the source code from Prof. Hickey's repo
  */
 
 public class Sample implements Comparable<Sample> {
 	public ArrayList<Double> sample;
 	
+	//constructors for different cases
 	public Sample(double[] values) {
 		this.sample = new ArrayList<Double>();
 		for (int i=0; i<values.length; i++) {
 			sample.add(values[i]);
-		}
-		
+		}	
 	}
 
 	public Sample(int[] values) {
@@ -24,7 +24,6 @@ public class Sample implements Comparable<Sample> {
 		for (int i=0; i<values.length; i++) {
 			sample.add((double) values[i]);
 		}
-
 	}
 
 	public Sample() {
@@ -36,9 +35,8 @@ public class Sample implements Comparable<Sample> {
 		if(this.sample.size() > 0) {
 			String output = "{";
 			for (double n : this.sample) {   // more efficient because iterator method is used. (instead of get() )
-				//String s = String.format("%.2f",n);
 				output +=  (int)n + ", ";
- 			}
+			}
 			output = output.substring(0,output.length()-2);
 			output += "}";
 			return output;
@@ -47,7 +45,8 @@ public class Sample implements Comparable<Sample> {
 		}
 	}
 	
-	public double distanceTo(Sample s2) {
+	//Finds the distance between two Samples
+	public double distanceTo(Sample s2) { //needs interface if your parameter is assumed to be Sample type
 		double sum = 0;
 		for(int i = 0; i< s2.sample.size(); i++) {
 			sum += Math.pow(this.sample.get(i)-s2.sample.get(i),2);

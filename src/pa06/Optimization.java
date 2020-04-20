@@ -14,12 +14,15 @@ public class Optimization {
 	public static final int ITERATIONS = 100;
 	
     public static void main(String[] args) throws FileNotFoundException {
+    	
+    	 //First initialize the kmeans with initial clusterpts(Centroids)
         KMeans kmeans = new KMeans();
         System.out.println(kmeans);
         kmeans.fillClusters();
      //   System.out.println(kmeans.originalData);
      //   System.out.println();
 
+        //until the clusterpts stop moving, iterate through this loops which runs the algorithms
         for(int i=0; i < ITERATIONS; i++) {
           //  System.out.println(kmeans);
             kmeans.tick();

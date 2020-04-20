@@ -16,8 +16,7 @@ public class Sample implements Comparable<Sample> {
 		this.sample = new ArrayList<Double>();
 		for (int i=0; i<values.length; i++) {
 			sample.add(values[i]);
-		}
-		
+		}	
 	}
 
 	public Sample(int[] values) {
@@ -25,7 +24,6 @@ public class Sample implements Comparable<Sample> {
 		for (int i=0; i<values.length; i++) {
 			sample.add((double) values[i]);
 		}
-
 	}
 
 	public Sample() {

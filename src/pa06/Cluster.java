@@ -71,9 +71,9 @@ public class Cluster {
         int i = 0;
         String output = "";
         if(clusterpt != null) {
-            output += "Cluster pt. : " + clusterpt.toString() +  " Cluster samples : ";
+            output += "Centroids : " + clusterpt.toString() +  " Cluster samples : ";
         }else{
-            output +=  "originalData samples : ";
+            output +=  "OriginalData samples : ";
         }
 
         for(Sample sample : this.cluster){

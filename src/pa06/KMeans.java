@@ -27,10 +27,9 @@ public class KMeans {
         Scanner file = new Scanner(new File(filename));
         //int i = 1;
         while (file.hasNextInt()) {
-            int num = file.nextInt(); //663441
-            DecimalFormat df = new DecimalFormat("000000");
-            String str = df.format(num);
-            int[] parameter = str.chars().map(c -> c - '0').toArray();  // int[] 6,6,3,4,4,1  //???? ask tim if that is in the range
+            double[] parameter = new double[2];
+            parameter[0] = file.nextInt();
+            if(file.hasNextInt()){parameter[1] = file.nextInt();}
             this.originalData.add(parameter);
         //    System.out.println(i);
         //    i++;

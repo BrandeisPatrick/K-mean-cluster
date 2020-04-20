@@ -1,5 +1,4 @@
 package pa06;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
@@ -7,10 +6,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Iterator;
 
+/**
+ * KMeans is an ArrayList of CLusters and a single Cluster for 
+ * the original data inputed. This class contains mostly methods used in
+ * the Optimization class when the algorithm is run
+ * @authors Patrick Lee, Denise Zong, Caelan Gawah-Meaden, Kyra Rivest
+ *
+ */
+
 public class KMeans {
     public ArrayList<Cluster> kClusters; 
     public Cluster originalData;
 
+    //constructor
     public KMeans() throws FileNotFoundException {
         this.kClusters = new ArrayList<Cluster>();
         this.originalData = new Cluster();

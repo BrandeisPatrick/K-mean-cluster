@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
  */
 public class Optimization {
 	
-	public static final int ITERATIONS = 100;
+	public static final int ITERATIONS = 1000;
 	
     public static void main(String[] args) throws FileNotFoundException {
         KMeans kmeans = new KMeans();

@@ -6,18 +6,20 @@ import java.util.Random;
 /**
  * A cluster is a cluster point (which is itself a sample)
  * and a list of Samples (the one's closest to that sample point, ideally).
- * @authors Patrick Lee, Denise Zong, Caelan Gawah-Meaden, Kyra Rivest
+ * @authors Patrick Lee, Denise Zhong, Caelan Gawah-Meaden, Kyra Rivest
  *
  */
 public class Cluster {
     public ArrayList<Sample> cluster; 
     public Sample clusterpt;
 
+    //Constructor creates new cluster with input
     public Cluster(Cluster originaldata){
            cluster = new ArrayList<Sample>();
            setClusterpt(originaldata);
     }
 
+    //Constrctor creates new empty cluster
     public Cluster(){
         cluster = new ArrayList<Sample>();
         clusterpt = new Sample();

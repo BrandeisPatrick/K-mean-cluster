@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * A Sample represents a vector of doubles to be used in a clustering algorithm...
- * @authors Patrick Lee, Denise Zong, Caelan Gawah-Meaden, Kyra Rivest
+ * @authors Patrick Lee, Denise Zhong, Caelan Gawah-Meaden, Kyra Rivest
  *Added a toString() and a Distance() method onto the source code from Prof. Hickey's repo
  */
 
@@ -30,7 +30,7 @@ public class Sample implements Comparable<Sample> {
 		this.sample = new ArrayList<Double>();
 	}
 
-
+	//Organize sample in a string for printing
 	public String toString() {
 		if(this.sample.size() > 0) {
 			String output = "{";

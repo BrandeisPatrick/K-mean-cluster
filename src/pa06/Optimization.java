@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
  * Each tick is one step in solving the algorithm which iterates through
  * each Sample point and assigns it to a Cluster, then find the average of the 
  * Cluster, sets a new Clusterpt, and reassigns the Sample points to new Clusters
- * @authors Patrick Lee, Denise Zong, Caelan Gawah-Meaden, Kyra Rivest
+ * @authors Patrick Lee, Denise Zhong, Caelan Gawah-Meaden, Kyra Rivest
  */
 public class Optimization {
 	

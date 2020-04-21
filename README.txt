@@ -4,7 +4,7 @@ Optimization.java has main method for Kmeans clustering optimization
 
 Input file should have same format as files from the website http://cs.joensuu.fi/sipu/datasets/ 
 
-Total steps of Iteration were set to 10000; 
+Total steps of Iteration were set to 1000; 
 
 
 
